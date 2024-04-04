@@ -1,4 +1,4 @@
-mport pickle
+import pickle
 
 import numpy as np
 from flask import Flask, jsonify, request
@@ -25,12 +25,11 @@ def make_predict():
     # model의 predict 함수를 호출하여, prediction 값을 구함
     y_test = model.predict(X_test)
 
-    # prediction 값을 json 화합니다.
+    # prediction 값을 json화 한다.
     response_body = jsonify(result=y_test.tolist())
 
-    # predict 결과를 담아 API Response Body를 return
+    # predict 결과를 담아 API Response Body를 반환
     return response_body
-
 
 if __name__ == '__main__':
     app.run(port=5000, debug=True)
