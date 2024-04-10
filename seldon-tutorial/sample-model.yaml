@@ -1,0 +1,15 @@
+apiVersion: machinelearning.seldon.io/v1
+kind: SeldonDeployment
+metadata:
+  name: iris-model
+  namespace: seldon
+spec:
+  name: iris
+  predictors:
+  - graph:
+      implementation: SKLEARN_SERVER # Pre-packaged model server for SKLEARN in Seldon Core.
+      modelUri: gs://seldon-models/v1.11.0-dev/sklearn/iris # Location where the open-source model provided by Seldon Core for classifying iris data is stored: trained model is already stored in Google Storage.
+      name: classifier
+    name: default
+    replicas: 1 # Number of replicas for load balancing (replicas automatically share the same URI).
+
